@@ -43,3 +43,7 @@ public/         # file tĩnh (favicon, font)
 astro.config.mjs
 wrangler.json   # cấu hình Worker tĩnh
 ```
+
+## Tự động deploy
+
+Mỗi lần push hoặc merge vào `main`, Cloudflare Workers Builds tự chạy `npm run build` rồi `npx wrangler deploy`, không cần chạy `npm run deploy` bằng tay. GitHub Actions (`.github/workflows/ci.yml`) kiểm tra build cho mọi commit và PR.
