@@ -4,14 +4,13 @@ interface Props {
 }
 
 const { date } = Astro.props;
+// Cố định múi giờ Việt Nam để ngày hiển thị không đổi dù build trên máy nào.
+const label = date.toLocaleDateString('vi-VN', {
+	year: 'numeric',
+	month: 'long',
+	day: 'numeric',
+	timeZone: 'Asia/Ho_Chi_Minh',
+});
 ---
 
-<time datetime={date.toISOString()}>
-	{
-		date.toLocaleDateString('en-us', {
-			year: 'numeric',
-			month: 'short',
-			day: 'numeric',
-		})
-	}
-</time>
+<time datetime={date.toISOString()}>{label}</time>
